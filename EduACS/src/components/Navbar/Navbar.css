@@ -1,0 +1,181 @@
+/* ═══════════════════════════════════════════════════════════
+   NAVBAR — Floating Pill Navigation
+   ═══════════════════════════════════════════════════════════ */
+
+.navbar {
+  position: fixed;
+  bottom: 2rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: var(--z-nav);
+  animation: fadeSlideUp 0.8s var(--ease-out-expo) 0.3s both;
+  pointer-events: none; /* ensure container doesn't block clicks underneath */
+}
+
+.navbar__pill {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 12px; /* Reset padding */
+  /* Semi-transparent gradient for glassmorphism with higher opacity for better legibility */
+  background: linear-gradient(90deg, rgba(220, 220, 220, 0.85) 0%, rgba(120, 120, 120, 0.85) 45%, rgba(20, 20, 20, 0.9) 100%);
+  background-clip: padding-box; /* Crucial: stops background from bleeding into border */
+  border: 6px solid rgba(255, 255, 255, 0.5); /* Outer border imitating glassy thick padding */
+  border-radius: 9999px;
+  backdrop-filter: blur(40px) saturate(250%);
+  -webkit-backdrop-filter: blur(40px) saturate(250%);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  pointer-events: auto; /* re-enable clicks inside the pill */
+}
+
+
+/* ── Links List ── */
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0
+}
+
+
+/* ── NavLink ── */
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0;
+  font-family: 'Share Tech Mono', 'VT323', 'Courier New', monospace;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-transform: uppercase;
+  transition: color var(--duration-base) var(--ease-out-quart), text-shadow var(--duration-base);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-link--active {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link__underline {
+  display: none; /* Hide default underline to match the design better */
+}
+
+
+/* ── NavLogo ── */
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-left: 12px; /* Shift logo slightly to the right */
+  border-radius: 24px; /* Pill shape */
+  transition: transform var(--duration-base) var(--ease-out-expo);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.nav-logo:hover {
+  transform: scale(1.05);
+}
+
+.nav-logo__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+/* ── Contact Button ── */
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.6rem;
+  font-family: 'Share Tech Mono', 'VT323', 'Courier New', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #111111;
+  background: #ffffff;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  transition:
+    transform var(--duration-fast) var(--ease-out-quart),
+    box-shadow var(--duration-fast) var(--ease-out-quart);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.contact-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+.contact-btn:active {
+  transform: scale(0.97);
+}
+
+.contact-btn__plus {
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+
+/* ── Responsive ── */
+
+@media (max-width: 768px) {
+  .navbar__pill {
+    gap: 1.5rem;
+    padding: 6px;
+  }
+  
+  .navbar__links {
+    gap: 1rem;
+  }
+  
+  .nav-link {
+    font-size: 0.8rem;
+  }
+
+  .nav-logo {
+    width: 56px;
+    height: 40px;
+  }
+
+  .contact-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    bottom: 1rem;
+    width: 95%;
+  }
+
+  .navbar__pill {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .navbar__links {
+    display: none; /* Hide links on very small screens to fit logo and button */
+  }
+}
