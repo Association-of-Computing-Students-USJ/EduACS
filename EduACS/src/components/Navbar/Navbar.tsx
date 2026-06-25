@@ -13,7 +13,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'HOME',     href: '#hero' },
   { label: 'ABOUT',    href: '#about' },
   { label: 'PROJECTS', href: '#projects' },
-  { label: 'JOURNAL',  href: '#journal' },
+  { label: 'OUR TEAM', href: '#our-team' },
 ];
 
 /**

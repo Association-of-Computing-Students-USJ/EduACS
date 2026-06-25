@@ -1,0 +1,1 @@
+export { ParallaxScene } from './ParallaxScene';
